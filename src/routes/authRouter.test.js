@@ -2,8 +2,8 @@ const request = require('supertest');
 const app = require('../service');
 
 const testUser = { name: 'pizza diner', email: 'reg@test.com', password: 'a' };
-let testUserAuthToken;
-let testUserID;
+// let testUserAuthToken;
+// let testUserID;
 
 beforeEach(async () => {
   testUser.email = Math.random().toString(36).substring(2, 12) + '@test.com';
@@ -39,6 +39,8 @@ test('logout', async () => {
 
   expect(logoutResp.status).toBe(200);
   expect(logoutResp.body.message).toBe('logout successful');
+
+  // gets jest to shut up about authswitch being called after it's closed or something; can I fix this?
   await new Promise(r => setTimeout(r, 500));
 
   /* should this really be a 401 error? You can't revoke tokens, so why do we store them?
