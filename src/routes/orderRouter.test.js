@@ -126,4 +126,6 @@ test('post order', async () => {
 
   expect(orderResp.status).toBe(200);
   expect(orderResp.body.order.items[0]).toMatchObject(testOrder.items[0]);
+
+  let lint = true;
 });
