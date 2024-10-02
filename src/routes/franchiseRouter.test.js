@@ -57,7 +57,7 @@ test('create franchise', async () => {
 });
 
 test('get user franchises', async () => {
-  const pushResp = await createUserFranchise();
+  await createUserFranchise();
   const getResp = await request(app)
                           .get(`/api/franchise/${testUserID}`)
                           .set('Authorization', `Bearer ${testUserAuthToken}`)

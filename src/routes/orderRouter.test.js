@@ -125,7 +125,5 @@ test('post order', async () => {
                             .send(testOrder);
 
   expect(orderResp.status).toBe(200);
-  const { id, image, title, ...item } = orderResp.body.order.items[0];
-  console.log(orderResp.body.order.items[0]);
   expect(orderResp.body.order.items[0]).toMatchObject(testOrder.items[0]);
 });

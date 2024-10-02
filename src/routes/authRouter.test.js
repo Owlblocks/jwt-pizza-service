@@ -7,9 +7,9 @@ const testUser = { name: 'pizza diner', email: 'reg@test.com', password: 'a' };
 
 beforeEach(async () => {
   testUser.email = Math.random().toString(36).substring(2, 12) + '@test.com';
-  const registerRes = await request(app).post('/api/auth').send(testUser);
-  testUserAuthToken = registerRes.body.token;
-  testUserID = registerRes.body.user.id;
+  await request(app).post('/api/auth').send(testUser);
+  // testUserAuthToken = registerRes.body.token;
+  // testUserID = registerRes.body.user.id;
 });
 
 test('login', async () => {
