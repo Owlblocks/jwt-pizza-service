@@ -149,6 +149,10 @@ class Metrics {
     this.authentication.failed += 1;
   }
 
+  addLoggedInUser() {
+    this.authentication.users += 1;
+  }
+
   sendMetricsToGrafana(metrics) {
     fetch(`${config.metrics.url}`, {
       method: 'post',
