@@ -81,7 +81,7 @@ class Metrics {
   }
   
   sendMetricsPeriodically(period) {
-    const timer = setInterval(() => {
+    setInterval(() => {
       try {
         let metrics = '';
         metrics += this.buildHttpMetrics() + "\n";

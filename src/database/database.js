@@ -58,6 +58,7 @@ class DB {
 
   async getUser(email, password) {
     const connection = await this.getConnection();
+    let success = false;
     try {
       const userResult = await this.query(connection, `SELECT * FROM user WHERE email=?`, [email]);
       const user = userResult[0];
@@ -70,11 +71,14 @@ class DB {
         return { objectId: r.objectId || undefined, role: r.role };
       });
 
-      metrics.addSuccessfulLoginAttempt();
+      success = true;
       return { ...user, roles: roles, password: undefined };
-    } catch(error) {
-      metrics.addFailedLoginAttempt();
     } finally {
+      if (success) {
+        metrics.addSuccessfulLoginAttempt();
+      } else {
+        metrics.addFailedLoginAttempt();
+      }
       connection.end();
     }
   }
