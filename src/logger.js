@@ -1,6 +1,9 @@
 const config = require('./config.js');
 
 class Logger {
+  // didn't use pizza logger. it's almost like I had inside information, having done this deliverable late.
+  // also, it's basically the same thing as the example code from the last assignment
+
   httpLogger(req, res, next) {
     let send = res.send;
     res.send = (resBody) => {
@@ -19,6 +22,14 @@ class Logger {
     };
     next();
   };
+
+  logDB(query) {
+    this.log('info', 'db', query);
+  }
+
+  logFactory(req) {
+    
+  }
 
   log(level, type, logData) {
     const labels = { component: config.logging.source, level: level, type: type };
