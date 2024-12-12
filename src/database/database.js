@@ -294,11 +294,7 @@ class DB {
   }
 
   async query(connection, sql, params) {
-    let query = sql;
-    for (let i = 0; i < params.length; i++) {
-      query = query.replace('?', params[i]);
-    }
-    logger.logDB(query);
+    logger.logDB(sql);
     
     const [results] = await connection.execute(sql, params);
     return results;
