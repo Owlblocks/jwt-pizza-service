@@ -22,7 +22,7 @@ class Logger {
     };
     next();
   };
-
+  
   logDB(query) {
     this.log('info', 'db', query);
   }
