@@ -27,8 +27,8 @@ class Logger {
     this.log('info', 'db', query);
   }
 
-  logFactory(req) {
-    
+  logFactory(orderInfo) {
+    this.log('info', 'factory', orderInfo);
   }
 
   log(level, type, logData) {
